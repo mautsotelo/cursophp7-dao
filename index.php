@@ -23,17 +23,25 @@ require_once("config.php");
 
 //echo $usuario;
 
-//criando um novo usuario nao deu certo!!
-//$aluno = new Usuario("aluno", "@lun0");
+/*criando um novo usuario
+$aluno = new Usuario("aluno", "@lun0");
 
-//$aluno->insert();
+$aluno->insert();
 
-//var_dump ($aluno);
+echo $aluno; */
 
+/* Altera usuario
 $usuario = new Usuario();
 $usuario->loadById(3);
 
 $usuario->update("professor", "!@#$");
+
+echo $usuario;*/
+
+$usuario = new Usuario();
+
+$usuario->loadById(6);
+$usuario->delete();
 
 echo $usuario;
 

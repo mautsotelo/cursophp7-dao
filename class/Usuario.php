@@ -105,7 +105,7 @@ class Usuario {
 
 		$sql = new Sql();
 
-		$results = $sql->select("INSERT_INTO tb_usuarios(deslogin, dessenha) VALUES (:LOGIN, :PASSWORD);", array(
+		$results = $sql->select("INSERT INTO tb_usuarios(deslogin, dessenha) VALUES (:LOGIN, :PASSWORD);", array(
 			':LOGIN'=>$this->getDeslogin(),
 			':PASSWORD'=>$this->getDessenha()
 
@@ -132,6 +132,21 @@ class Usuario {
 			':PASSWORD'=>$this->getDessenha(),
 			':ID'=>$this->getIdusuario()
 		));
+	}
+
+	public function delete() {
+
+		$sql = new Sql();
+
+		$sql->query("DELETE FROM tb_usuarios WHERE idusuario = :ID", array(
+			':ID'=>$this->getIdusuario()
+		));
+
+		$this->setIdusuario(0);
+		$this->setDeslogin("");
+		$this->setDessenha("");
+		$this->setDtcadastro(new DateTime());
+
 	}
 
 	public function __construct($login = "", $password = "") {
